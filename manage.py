@@ -2,11 +2,14 @@ import os
 import unittest
 from flask_script import Manager
 from app.main import create_app
+from app import blueprint
 
 # Create application instance with the required 
 # parameter from the enviroment variable.
 # This can either be 'development', 'testing' or 'production.
 app = create_app(os.getenv('BOILERPLATE_ENV') or "development")
+# Register blueprint
+app.register_blueprint(blueprint)
 
 manager = Manager(app)
 
